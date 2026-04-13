@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" rx="36" fill="#070C18"/>
+  <rect x="36" y="36" width="1128" height="558" rx="28" fill="url(#a)" fill-opacity=".14" stroke="#ffffff" stroke-opacity=".08"/>
+  <circle cx="264" cy="112" r="190" fill="url(#b)" fill-opacity=".26"/>
+  <circle cx="948" cy="158" r="162" fill="url(#c)" fill-opacity=".24"/>
+  <path d="M703 136 858 224v164L703 476 548 388V224l155-88Z" stroke="url(#d)" stroke-width="4"/>
+  <path d="M703 136v128m0 0 155-40M703 264 548 224m155 40v212" stroke="#C7E8FF" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="88" y="228" fill="white" font-family="Sora, Segoe UI, sans-serif" font-size="66" font-weight="700">Free3DConvert</text>
+  <text x="88" y="318" fill="#D8E2F2" font-family="Sora, Segoe UI, sans-serif" font-size="58" font-weight="600">Convert 3D Files Online</text>
+  <text x="88" y="390" fill="#94A3B8" font-family="Sora, Segoe UI, sans-serif" font-size="30">Static-first, SEO-ready, and honest about format limitations.</text>
+  <rect x="88" y="460" width="274" height="76" rx="18" fill="url(#e)"/>
+  <text x="147" y="508" fill="#020617" font-family="Sora, Segoe UI, sans-serif" font-size="30" font-weight="700">Get Started Now</text>
+  <defs>
+    <linearGradient id="a" x1="36" y1="36" x2="1124" y2="594" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59C4FF"/>
+      <stop offset="1" stop-color="#8E6BFF"/>
+    </linearGradient>
+    <radialGradient id="b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(264 112) rotate(90) scale(190)">
+      <stop stop-color="#59C4FF"/>
+      <stop offset="1" stop-color="#59C4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="c" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(948 158) rotate(90) scale(162)">
+      <stop stop-color="#8E6BFF"/>
+      <stop offset="1" stop-color="#8E6BFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="d" x1="548" y1="136" x2="875" y2="476" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78E4FF"/>
+      <stop offset="1" stop-color="#8E6BFF"/>
+    </linearGradient>
+    <linearGradient id="e" x1="88" y1="460" x2="362" y2="536" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78E4FF"/>
+      <stop offset="1" stop-color="#8E6BFF"/>
+    </linearGradient>
+  </defs>
+</svg>
