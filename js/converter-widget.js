@@ -49,7 +49,7 @@
     let selectedFile = null;
     let timers = [];
     let detectedSourceId = null;
-    const defaultStatusMessage = statusMessage.textContent ?? 'Choose a file and route, then run the check.';
+    const defaultStatusMessage = statusMessage.textContent ?? 'Choose a file and output format, then run the check.';
 
     const normalize = (value) => value.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
     const resolveId = (value) => aliasMap.get(normalize(value));
@@ -136,20 +136,20 @@
         const sourceLabel = formatMap.get(sourceId)?.label || sourceId;
         return {
           decision: 'partner-required',
-          message: `${sourceLabel} is a native source format. This route needs manual handling.`,
+          message: `${sourceLabel} is a native source format. It needs support.`,
         };
       }
 
       if (browserPairs.has(`${sourceId}:${targetId}`)) {
         return {
           decision: 'browser-supported',
-          message: 'This open-format route can continue in the browser.',
+          message: 'This open-format conversion can continue in the browser.',
         };
       }
 
       return {
         decision: 'not-available',
-        message: 'This format pair is not available in browser mode. Choose another route or contact support.',
+        message: 'This format pair is not available in the browser. Choose another format or contact support.',
       };
     };
 
@@ -161,21 +161,21 @@
         updateProgress(100, 'Ready');
         showStatus(
           'Ready',
-          `${baseMessage} The route check finished with reduced motion enabled.`,
+          `${baseMessage} The check finished with reduced motion enabled.`,
           'success',
         );
         return;
       }
 
       updateProgress(14, 'Checking file');
-      showStatus('Checking file', `${baseMessage} Checking the file and route...`, 'info');
+      showStatus('Checking file', `${baseMessage} Checking the file and selected format...`, 'info');
 
       timers.push(
         window.setTimeout(() => {
-          updateProgress(58, 'Checking route');
+          updateProgress(58, 'Checking format');
           showStatus(
-            'Checking route',
-            'The route is being checked in browser mode.',
+            'Checking format',
+            'The selected format is being checked in the browser.',
             'info',
           );
         }, 550),
@@ -197,7 +197,7 @@
           updateProgress(100, 'Ready');
           showStatus(
             'Ready',
-            'The check finished. Supported open-format routes can continue from here.',
+            'The check finished. Supported open-format files can continue from here.',
             'success',
           );
         }, 1900),
@@ -262,7 +262,7 @@
 
     ctaButton.addEventListener('click', () => {
       if (!selectedFile) {
-        showStatus('Select a file first', 'Choose a local file to check this route.', 'warning');
+        showStatus('Select a file first', 'Choose a local file to check this format.', 'warning');
         return;
       }
 

@@ -1,7 +1,7 @@
 {
   "name": "Free3DConvert",
   "short_name": "Free3DConvert",
-  "description": "Browser-first 3D conversion discovery site with honest format support levels.",
+  "description": "Check 3D file formats, compare output options, and see when a file needs extra help.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
