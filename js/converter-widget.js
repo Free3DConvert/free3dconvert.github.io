@@ -42,7 +42,7 @@
     const partnerPanel = root.querySelector('[data-partner-panel]');
     const partnerLink = root.querySelector('[data-partner-link]');
 
-    if (!dropzone || !fileInput || !fileName || !fromSelect || !toSelect || !ctaButton || !resetButton) return;
+    if (!dropzone || !fileInput || !fileName || !fromSelect || !toSelect || !resetButton) return;
     if (!progressWrap || !progressFill || !progressValue || !progressLabel || !progressRoot) return;
     if (!statusPanel || !statusTitle || !statusMessage || !partnerPanel || !partnerLink) return;
 
@@ -100,7 +100,9 @@
     };
 
     const updateCtaState = () => {
-      ctaButton.disabled = !selectedFile;
+      if (ctaButton instanceof HTMLButtonElement) {
+        ctaButton.disabled = !selectedFile;
+      }
     };
 
     const syncSourceFromDetectedFile = () => {
@@ -260,33 +262,35 @@
       fileInput.click();
     });
 
-    ctaButton.addEventListener('click', () => {
-      if (!selectedFile) {
-        showStatus('Select a file first', 'Choose a local file to check this format.', 'warning');
-        return;
-      }
-
-      clearTimers();
-      const result = evaluateDecision();
-      const extension = selectedFile.name.includes('.') ? selectedFile.name.split('.').pop()?.toLowerCase() : null;
-      const extensionNote = extension ? `Detected extension: .${extension}.` : '';
-      const baseMessage = `${result.message} ${extensionNote}`.trim();
-
-      if (result.decision === 'browser-supported') {
-        runBrowserSupportedFlow(baseMessage);
-        return;
-      }
-
-      if (result.decision === 'partner-required') {
-        if (partnerLink instanceof HTMLAnchorElement) {
-          partnerLink.href = '/contact';
+    if (ctaButton instanceof HTMLButtonElement) {
+      ctaButton.addEventListener('click', () => {
+        if (!selectedFile) {
+          showStatus('Select a file first', 'Choose a local file to check this format.', 'warning');
+          return;
         }
-        runPartnerRequiredFlow(baseMessage);
-        return;
-      }
 
-      runUnavailableFlow(baseMessage);
-    });
+        clearTimers();
+        const result = evaluateDecision();
+        const extension = selectedFile.name.includes('.') ? selectedFile.name.split('.').pop()?.toLowerCase() : null;
+        const extensionNote = extension ? `Detected extension: .${extension}.` : '';
+        const baseMessage = `${result.message} ${extensionNote}`.trim();
+
+        if (result.decision === 'browser-supported') {
+          runBrowserSupportedFlow(baseMessage);
+          return;
+        }
+
+        if (result.decision === 'partner-required') {
+          if (partnerLink instanceof HTMLAnchorElement) {
+            partnerLink.href = '/contact';
+          }
+          runPartnerRequiredFlow(baseMessage);
+          return;
+        }
+
+        runUnavailableFlow(baseMessage);
+      });
+    }
 
     resetButton.addEventListener('click', () => {
       clearTimers();
